@@ -5,6 +5,9 @@ public class Funcionario {
     private String sobrenome;
     private float salario;
 
+    public Funcionario(String nome, String sobrenome) {
+    }
+
     public String getNome() {
         return nome;
     }
