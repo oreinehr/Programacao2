@@ -4,30 +4,32 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Exemplo2 {
-    public static void main(String[] args) {
+    public static int lerInteiro () {
         Scanner ler = new Scanner(System.in);
+        int num = 0;
         boolean valido;
-
         do {
             try {
                 System.out.println("Digite um número: ");
-                int n1 = ler.nextInt();
-                System.out.println("Digite outro número: ");
-                int n2 = ler.nextInt();
-                int resposta = n1 / n2;
-                System.out.println(resposta);
+                num = ler.nextInt();
                 valido = true;
-            } catch (InputMismatchException instancia) {
-                System.out.println("Os valores devem ser números");
-                valido = false;
+            } catch (InputMismatchException e) {
+                System.out.println("O valor precisa ser um número");
                 ler.next();
-            } catch (ArithmeticException instancia) {
-                System.out.println("Não é possível dividir por zero");
                 valido = false;
-            } finally {
-                System.out.println("Sempre sou executeido");
             }
-        }while(!valido);
+        } while (!valido);
+        return num;
+    }
 
+    public static void main(String[] args) {
+        try{
+            int n1 = lerInteiro();
+            int n2 = lerInteiro();
+            int resposta = n1 / n2;
+            System.out.println(resposta);
+        }catch (ArithmeticException e) {
+            System.out.println("Não é posível dividir por zero");
+        }
     }
 }
